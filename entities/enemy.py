@@ -12,20 +12,20 @@ class Enemy(Point):
 	size = Column(Integer)
 	activity = Column(String(64))
 	# location = Column(String(64))
-	uniform = Column(String(64))
-	time = Column(Integer)
+	uniforms = Column(String(64))
+	# time = Column(Integer)
 	equipment = Column(String(64))
 
 	__mapper_args__ = {
 		'polymorphic_identity': 'enemy'
 	}
 
-	def __init__(self: Self, size: int = None, activity: str = None, location: str = None, uniform: str = None, time: int = None, equipment: str = None):
+	def __init__(self: Self, size: int = None, activity: str = None, location: str = None, uniforms: str = None, time: int = None, equipment: str = None):
 		super().__init__(location, time)
 		self.size = size
 		self.activity = activity
 		self.location = location
-		self.uniform = uniform
+		self.uniforms = uniforms
 		self.equipment = equipment
 
 	def __repr__(self):

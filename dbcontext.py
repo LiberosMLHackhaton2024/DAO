@@ -18,8 +18,8 @@ class Context:
 		self.session = sessionmaker(bind = self.engine)()
 
 	def reset_and_populate(self: Self):
-		f6 = Ally("flota 6", 9, 9, 9, "u", 13, "o", "p", "a", "s")
-		f2 = Ally("flota 2", 10, 10, 10, "q", 13, "e", "r", "t", "y")
+		f6 = Ally("flota 6", 9, 9, 9, "u", 13, 10, "p", "a")
+		f2 = Ally("flota 2", 10, 10, 10, "q", 13, 10, "r", "t")
 		r0 = SAS(f6, 1, 3, 4, 5)
 		try:
 			for x in self.session.query(Point).all():
