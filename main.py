@@ -1,5 +1,5 @@
-from dbcontext_database import DatabaseContext
-from dbcontext_reportlogs import ReportLogsContext
+from mappoints.dbcontext_mappoints import DatabaseContext
+from reportlogs.dbcontext_reportlogs import ReportLogsContext
 
 dbc = DatabaseContext()
 rlc = ReportLogsContext()
