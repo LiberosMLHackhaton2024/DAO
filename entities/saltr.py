@@ -19,7 +19,7 @@ class SALTR(Report):
 		'polymorphic_identity': 'saltr'
 	}
 
-	def __init__(self: Self, recording: int, situation: str = None, action: str = None, location: str = None, time: str = None, reaction: str = None):
+	def __init__(self: Self, sender: Ally = None, recording: int = None, situation: str = None, action: str = None, location: str = None, time: str = None, reaction: str = None):
 		super().__init__(recording)
 		self.situation = situation
 		self.action = action
@@ -28,4 +28,4 @@ class SALTR(Report):
 		self.reaction = reaction
 
 	def __repr__(self):
-		return f"SALTR({self.recording}, {self.situation}, {self.action}, {self.location}, {self.time}, {self.reaction})"
+		return f"SALTR({self.sender}, {self.recording}, {self.situation}, {self.action}, {self.location}, {self.time}, {self.reaction})"

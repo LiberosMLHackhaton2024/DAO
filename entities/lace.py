@@ -18,13 +18,13 @@ class LACE(Report):
 		'polymorphic_identity': 'lace'
 	}
 
-	def __init__(self: Self, recording: int, liquids: str = None, ammunition: str = None, casualties: str = None, equipment: str = None):
-		super().__init__(recording)
+	def __init__(self: Self, sender: Ally = None, recording: int = None, liquids: str = None, ammunition: str = None, casualties: str = None, equipment: str = None):
+		super().__init__(sender, recording)
 		self.liquids = liquids
 		self.ammunition = ammunition
 		self.casualties = casualties
 		self.equipment = equipment
 
 	def __repr__(self: Self):
-		return f"LACE({self.recording}, {self.liquids}, {self.ammunition}, {self.casualties}, {self.equipment})"
+		return f"LACE({self.sender}, {self.recording}, {self.liquids}, {self.ammunition}, {self.casualties}, {self.equipment})"
 

@@ -5,7 +5,7 @@ from typing import Self
 from entities.point import Point
 
 class Enemy(Point):
-	__tablename__ = "units"
+	__tablename__ = "enemies"
 
 	id = Column(Integer, ForeignKey('points.id'), primary_key=True)
 

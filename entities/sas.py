@@ -24,7 +24,7 @@ class SAS(Report):
 		self.equipment = equipment
 
 	def __repr__(self: Self):
-		return f"SAS({self.recording}, {self.size}, {self.activity}, {self.location}, {self.uniforms}, {self.time}, {self.equipment})"
+		return f"SAS({self.sender}, {self.recording}, {self.size}, {self.activity}, {self.location}, {self.uniforms}, {self.time}, {self.equipment})"
 	
 	def apply(self: Self, session: Session):
 		# Access the sender associated with this report

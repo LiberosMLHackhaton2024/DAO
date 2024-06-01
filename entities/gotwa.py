@@ -19,8 +19,8 @@ class GOTWA(Report):
 		'polymorphic_identity': 'gotwa'
 	}
 
-	def __init__(self: Self, recording: int, going: str = None, others: str = None, time: str = None, what: str = None, action: str = None):
-		super().__init__(recording)
+	def __init__(self: Self, sender: Ally = None, recording: int = None, going: str = None, others: str = None, time: str = None, what: str = None, action: str = None):
+		super().__init__(sender, recording)
 		self.going = going
 		self.others = others
 		self.time = time
@@ -28,5 +28,5 @@ class GOTWA(Report):
 		self.action = action
 
 	def __repr__(self):
-		return f"GOTWA({self.recording}, {self.going}, {self.others}, {self.time}, {self.what}, {self.action})"
+		return f"GOTWA({self.sender}, {self.recording}, {self.going}, {self.others}, {self.time}, {self.what}, {self.action})"
 

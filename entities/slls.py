@@ -18,12 +18,12 @@ class SLLS(Report):
 		'polymorphic_identity': 'slls'
 	}
 
-	def __init__(self: Self, recording: int, stop: str = None, listen: str = None, look: str = None, smell: str = None):
-		super().__init__(recording)
+	def __init__(self: Self, sender: Ally = None, recording: int = None, stop: str = None, listen: str = None, look: str = None, smell: str = None):
+		super().__init__(sender, recording)
 		self.stop = stop
 		self.listen = listen
 		self.look = look
 		self.smell = smell
 
 	def __repr__(self):
-		return f"SLLS({self.recording}, {self.stop}, {self.listen}, {self.look}, {self.smell})"
+		return f"SLLS({self.sender}, {self.recording}, {self.stop}, {self.listen}, {self.look}, {self.smell})"
