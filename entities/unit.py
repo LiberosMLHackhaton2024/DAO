@@ -2,7 +2,7 @@ from sqlalchemy import *
 from enum import Enum as enumEnum
 from typing import Self
 
-from common import Base
+from base_database import Base
 
 class AmmoStatus(enumEnum):
 	RED = 1

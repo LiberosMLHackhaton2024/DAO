@@ -1,9 +1,9 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, declarative_base
 from typing import Self
 
-from entities.report import Report
-from common import Base
+from entities.report import *
+from base_reportlogs import Base
 
 class ReportLogsContext:
 	def __init__(self: Self):
@@ -12,19 +12,19 @@ class ReportLogsContext:
 		Base.metadata.create_all(self.engine)
 		self.session = sessionmaker(bind = self.engine)()
 
-	# def reset_and_populate(self: Self):
-		# f2 = Unit("flota 2", AmmoStatus.GREEN)
-		# f4 = Unit("flota 4", AmmoStatus.YELLOW)
-		# try:
-		# 	# Delete all existing entries
-		# 	for x in self.session.query(Unit).all():
-		# 		self.session.delete(x)
-		# 	# Add new entries
-		# 	self.session.add(f2)
-		# 	self.session.add(f4)
-		# 	self.session.commit()
-		# except:
-		# 	self.session.rollback()
+	def reset_and_populate(self: Self):
+		r0 = SALTRReport(2, "sit", "act", "loc", "tim", "rea")
+		r1 = SALUTEReport(3, "siz", "act", "loc", "uni", "tim", "equ")
+		try:
+			# Delete all existing entries
+			for x in self.session.query(Report).all():
+				self.session.delete(x)
+			# Add new entries
+			self.session.add(r0)
+			self.session.add(r1)
+			self.session.commit()
+		except:
+			self.session.rollback()
 
 	# def report_update(self: Self):
 	# 	...

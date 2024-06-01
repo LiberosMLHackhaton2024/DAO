@@ -2,8 +2,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from typing import Self
 
+from base_database import Base
 from entities.unit import Unit, AmmoStatus
-from common import Base
 
 class DatabaseContext:
 	def __init__(self: Self):
