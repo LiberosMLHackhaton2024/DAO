@@ -3,12 +3,12 @@ from sqlalchemy.orm import sessionmaker
 from typing import Self
 
 from common_base import Base
-# from entities import *
 from entities.ally import Ally
 from entities.salute import SALUTE
 from entities.gotwa import GOTWA
 from entities.sas import SAS
 from entities.report import Report
+from entities.point import Point
 
 class Context:
 	def __init__(self: Self):
@@ -18,12 +18,11 @@ class Context:
 		self.session = sessionmaker(bind = self.engine)()
 
 	def reset_and_populate(self: Self):
-		f2 = Ally("flota 2", 10, 10, 10, "", "", "", "", "", "")
-		f6 = Ally("flota 6", 9, 9, 9, "", "", "", "", "", "")
-		r0 = SAS(f2, None, 3, 4, 5)
+		f6 = Ally("flota 6", 9, 9, 9, "u", 13, "o", "p", "a", "s")
+		f2 = Ally("flota 2", 10, 10, 10, "q", 13, "e", "r", "t", "y")
+		r0 = SAS(f6, 1, 3, 4, 5)
 		try:
-			# Delete all existing entries
-			for x in self.session.query(Ally).all():
+			for x in self.session.query(Point).all():
 				self.session.delete(x)
 			for x in self.session.query(Report).all():
 				self.session.delete(x)

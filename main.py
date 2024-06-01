@@ -1,7 +1,4 @@
-from mappoints.dbcontext_mappoints import DatabaseContext
-from reportlogs.dbcontext_reportlogs import ReportLogsContext
+from dbcontext import Context
 
-dbc = DatabaseContext()
-rlc = ReportLogsContext()
-dbc.reset_and_populate()
-rlc.reset_and_populate()
+c = Context()
+c.reset_and_populate()
