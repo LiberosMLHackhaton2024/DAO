@@ -1,8 +1,6 @@
 from sqlalchemy import Column, Integer, ForeignKey, String
-from typing import Self
-from sqlalchemy.orm import relationship
+from typing import Self, Any
 
-from common_base import Base
 from entities.ally import Ally
 from entities.report import Report
 
@@ -18,13 +16,13 @@ class LACE(Report):
 		'polymorphic_identity': 'lace'
 	}
 
-	def __init__(self: Self, sender: Ally | None = None, recording: int | None = None, liquids: str | None = None, ammunition: str | None = None, casualties: str | None = None, equipment: str | None = None):
-		super().__init__(sender, recording)
+	def __init__(self: Self, sender: Ally | None = None, recording: Any | None = None, transcription: str | None = None, liquids: str | None = None, ammunition: str | None = None, casualties: str | None = None, equipment: str | None = None):
+		super().__init__(sender, recording, transcription)
 		self.liquids = liquids
 		self.ammunition = ammunition
 		self.casualties = casualties
 		self.equipment = equipment
 
 	def __repr__(self: Self):
-		return f"LACE({self.sender}, {self.recording}, {self.liquids}, {self.ammunition}, {self.casualties}, {self.equipment})"
+		return f"LACE({self.sender}, {self.recording}, {self.transcription}, {self.liquids}, {self.ammunition}, {self.casualties}, {self.equipment})"
 

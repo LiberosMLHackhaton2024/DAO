@@ -1,8 +1,6 @@
 from sqlalchemy import Column, Integer, ForeignKey, String
-from typing import Self
-from sqlalchemy.orm import relationship
+from typing import Self, Any
 
-from common_base import Base
 from entities.ally import Ally
 from entities.report import Report
 
@@ -18,12 +16,12 @@ class SLLS(Report):
 		'polymorphic_identity': 'slls'
 	}
 
-	def __init__(self: Self, sender: Ally | None = None, recording: int | None = None, stop: str | None = None, listen: str | None = None, look: str | None = None, smell: str | None = None):
-		super().__init__(sender, recording)
+	def __init__(self: Self, sender: Ally | None = None, recording: Any | None = None, transcription: str | None = None, stop: str | None = None, listen: str | None = None, look: str | None = None, smell: str | None = None):
+		super().__init__(sender, recording, transcription)
 		self.stop = stop
 		self.listen = listen
 		self.look = look
 		self.smell = smell
 
 	def __repr__(self):
-		return f"SLLS({self.sender}, {self.recording}, {self.stop}, {self.listen}, {self.look}, {self.smell})"
+		return f"SLLS({self.sender}, {self.recording}, {self.transcription}, {self.stop}, {self.listen}, {self.look}, {self.smell})"

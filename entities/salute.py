@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, ForeignKey, String
-from typing import Self
-from sqlalchemy.orm import relationship, Session
+from typing import Self, Any
+from sqlalchemy.orm import Session
 
 from entities.report import Report
 from entities.enemy import Enemy
@@ -20,8 +20,8 @@ class SALUTE(Report):
 		'polymorphic_identity': 'salute'
 	}
 
-	def __init__(self: Self, sender: Ally | None = None, recording: int | None = None, size: int | None = None, activity: str | None = None, location: str | None = None, uniforms: str | None = None, time: int | None = None, equipment: str | None = None):
-		super().__init__(sender, recording)
+	def __init__(self: Self, sender: Ally | None = None, recording: Any | None = None, transcription: str | None = None, size: int | None = None, activity: str | None = None, location: str | None = None, uniforms: str | None = None, time: int | None = None, equipment: str | None = None):
+		super().__init__(sender, recording, transcription)
 		self.size = size
 		self.activity = activity
 		self.location = location
@@ -30,7 +30,7 @@ class SALUTE(Report):
 		self.equipment = equipment
 
 	def __repr__(self):
-		return f"SALUTE({self.recording}, {self.size}, {self.activity}, {self.location}, {self.uniforms}, {self.time}, {self.equipment})"
+		return f"SALUTE({self.recording}, {self.transcription}, {self.size}, {self.activity}, {self.location}, {self.uniforms}, {self.time}, {self.equipment})"
 	
 	def apply(self: Self, session: Session):
 		# Create a new Enemy instance using attributes from this SALUTE report

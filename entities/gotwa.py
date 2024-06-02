@@ -1,8 +1,6 @@
 from sqlalchemy import Column, Integer, ForeignKey, String
-from typing import Self
-from sqlalchemy.orm import relationship
+from typing import Self, Any
 
-from common_base import Base
 from entities.ally import Ally
 from entities.report import Report
 
@@ -19,8 +17,8 @@ class GOTWA(Report):
 		'polymorphic_identity': 'gotwa'
 	}
 
-	def __init__(self: Self, sender: Ally | None = None, recording: int | None = None, going: str | None = None, others: str | None = None, time: str | None = None, what: str | None = None, action: str | None = None):
-		super().__init__(sender, recording)
+	def __init__(self: Self, sender: Ally | None = None, recording: Any | None = None, transcription: str | None = None, going: str | None = None, others: str | None = None, time: str | None = None, what: str | None = None, action: str | None = None):
+		super().__init__(sender, recording, transcription)
 		self.going = going
 		self.others = others
 		self.time = time
@@ -28,5 +26,5 @@ class GOTWA(Report):
 		self.action = action
 
 	def __repr__(self: Self):
-		return f"GOTWA({self.sender}, {self.recording}, {self.going}, {self.others}, {self.time}, {self.what}, {self.action})"
+		return f"GOTWA({self.sender}, {self.recording}, {self.transcription}, {self.going}, {self.others}, {self.time}, {self.what}, {self.action})"
 

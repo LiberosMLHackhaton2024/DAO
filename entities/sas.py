@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, ForeignKey, String
-from typing import Self
-from sqlalchemy.orm import relationship, Session
+from typing import Self, Any
+from sqlalchemy.orm import Session
 
 from entities.report import Report
 from entities.ally import Ally
@@ -17,14 +17,14 @@ class SAS(Report):
 		'polymorphic_identity': 'sas'
 	}
 
-	def __init__(self: Self, sender: Ally | None = None, recording: int | None = None, losses: int | None = None, ammunition: int | None = None, equipment: int | None = None):
-		super().__init__(sender, recording)
+	def __init__(self: Self, sender: Ally | None = None, recording: Any | None = None, transcription: str | None = None, losses: int | None = None, ammunition: int | None = None, equipment: int | None = None):
+		super().__init__(sender, recording, transcription)
 		self.losses = losses
 		self.ammunition = ammunition
 		self.equipment = equipment
 
 	def __repr__(self: Self):
-		return f"SAS({self.sender}, {self.recording}, {self.size}, {self.activity}, {self.location}, {self.uniforms}, {self.time}, {self.equipment})"
+		return f"SAS({self.sender}, {self.recording}, {self.transcription}, {self.size}, {self.activity}, {self.location}, {self.uniforms}, {self.time}, {self.equipment})"
 	
 	def apply(self: Self, session: Session):
 		# Access the sender associated with this report
