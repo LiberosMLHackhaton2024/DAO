@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, ForeignKey, String, Float
+from sqlalchemy import Column, Integer, ForeignKey, String, Float, Tuple
 from typing import Self
 
 from entities.point import Point
@@ -24,8 +24,8 @@ class Evacuation(Point):
 		'polymorphic_identity': 'evacuation'
 	}
 
-	def __init__(self: Self, size: int | None = None, frequency: float | None = None, activity: str | None = None, equipment: str | None = None, safety: str | None = None, landing_site_marking: str | None = None, nationality: str | None = None, contamination: str | None = None):
-		super().__init__()
+	def __init__(self: Self, location_x: float | None = None, location_y: float | None = None, time: int | None = None, size: int | None = None, frequency: float | None = None, activity: str | None = None, equipment: str | None = None, safety: str | None = None, landing_site_marking: str | None = None, nationality: str | None = None, contamination: str | None = None):
+		super().__init__(location_x, location_y, time)
 		self.size = size
 		self.frequency = frequency
 		self.activity = activity

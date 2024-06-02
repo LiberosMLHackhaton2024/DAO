@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Float, Tuple
 from typing import Self
 
 from common_base import Base
@@ -8,7 +8,8 @@ class Point(Base):
 
 	id = Column(Integer, primary_key = True)
 
-	location = Column(String(64))
+	location_x = Column(Float)
+	location_y = Column(Float)
 	time = Column(Integer)	# time of last contact/report
 	type = Column(String(50))
 
@@ -17,9 +18,10 @@ class Point(Base):
 		'polymorphic_identity': 'point'
 	}
 
-	def __init__(self: Self, location: str | None = None, time: int | None = None):
-		self.location = location
+	def __init__(self: Self, location_x: Float | None = None, location_y: Float | None = None, time: int | None = None):
+		self.location_x = location_x
+		self.location_y = location_y
 		self.time = time
 
-	def __repr__(self):
+	def __repr__(self: Self):
 		return f"Point({self.location}, {self.time})"

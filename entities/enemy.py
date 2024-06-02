@@ -19,11 +19,11 @@ class Enemy(Point):
 		'polymorphic_identity': 'enemy'
 	}
 
-	def __init__(self: Self, size: int | None = None, activity: str | None = None, location: str | None = None, uniforms: str | None = None, time: int | None = None, equipment: str | None = None):
-		super().__init__(location, time)
+	def __init__(self: Self, size: int | None = None, activity: str | None = None, location_x: float | None = None, location_y: float | None = None, uniforms: str | None = None, time: int | None = None, equipment: str | None = None):
+		super().__init__(location_x, location_y, time)
 		self.size = size
 		self.activity = activity
-		self.location = location
+		# self.location = location
 		self.uniforms = uniforms
 		self.equipment = equipment
 

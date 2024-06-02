@@ -26,8 +26,8 @@ class Ally(Point):
 		'polymorphic_identity': 'ally'
 	}
 
-	def __init__(self: Self, name: str | None = None, losses: int | None = None, ammunition: int | None = None, equipment: int | None = None, location: str | None = None, time: int | None = None, enemy_contact_time: int | None = None, situation: str | None = None, action: str | None = None):
-		super().__init__(location, time)
+	def __init__(self: Self, name: str | None = None, losses: int | None = None, ammunition: int | None = None, equipment: int | None = None, location_x: float | None = None, location_y: float | None = None, time: int | None = None, enemy_contact_time: int | None = None, situation: str | None = None, action: str | None = None):
+		super().__init__(location_x, location_y, time)
 
 		self.name = name
 

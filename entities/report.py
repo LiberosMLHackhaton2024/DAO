@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, ForeignKey, String
+from sqlalchemy import Column, Integer, ForeignKey, String, Text
 from typing import Self, Any
 from sqlalchemy.orm import relationship
 
@@ -13,7 +13,7 @@ class Report(Base):
 	sent_by = Column(Integer, ForeignKey("allies.id"))
 	sender = relationship("Ally", backref = "allies", lazy = False)
 	
-	recording = Column(String(64))
+	recording = Column(Text)
 	transcription = Column(String(64))
 
 	type = Column(String(50))

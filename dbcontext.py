@@ -23,10 +23,10 @@ class Context:
 		self.session = sessionmaker(bind = self.engine)()
 
 	def reset_and_populate(self: Self):
-		f6 = Ally("flota 6", 9, 9, 9, "u", 13, 10, "p", "a")
-		f2 = Ally("flota 2", 10, 10, 10, "q", 13, 10, "r", "t")
+		f6 = Ally("flota 6", 9, 9, 9, 0.1, -3.14, 13, 10, "p", "a")
+		f2 = Ally("flota 2", 10, 10, 10, 5.55, 2.34, 13, 10, "r", "t")
 		r0 = SAS(f6, 1, "trans", 3, 4, 5)
-		r1 = SALUTE(f2, 100, "trans", 1000, "a", "l", "u", 10, "e")
+		r1 = SALUTE(f2, 100, "trans", 1000, "a", 1.23, 43.5, "u", 10, "e")
 		try:
 			for x in self.session.query(Point).all():
 				self.session.delete(x)
