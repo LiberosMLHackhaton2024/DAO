@@ -9,10 +9,15 @@ from entities.gotwa import GOTWA
 from entities.sas import SAS
 from entities.report import Report
 from entities.point import Point
+from entities.enemy import Enemy
+from entities.evacuation import Evacuation
+from entities.lace import LACE
+from entities.slls import SLLS
+from entities.saltr import SALTR
 
 class Context:
 	def __init__(self: Self):
-		self.DATABASE_URL = "postgresql://root:database_password@192.168.23.66:5432/earofnapoleon"
+		self.DATABASE_URL = "postgresql://root:database_password@192.168.43.218:5432/earofnapoleon"
 		self.engine = create_engine(self.DATABASE_URL)
 		Base.metadata.create_all(self.engine)
 		self.session = sessionmaker(bind = self.engine)()

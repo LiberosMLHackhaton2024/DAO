@@ -1,5 +1,4 @@
-from sqlalchemy import *
-from enum import Enum as enumEnum
+from sqlalchemy import Column, Integer, ForeignKey, String
 from typing import Self
 
 from entities.point import Point
@@ -20,7 +19,7 @@ class Enemy(Point):
 		'polymorphic_identity': 'enemy'
 	}
 
-	def __init__(self: Self, size: int = None, activity: str = None, location: str = None, uniforms: str = None, time: int = None, equipment: str = None):
+	def __init__(self: Self, size: int | None = None, activity: str | None = None, location: str | None = None, uniforms: str | None = None, time: int | None = None, equipment: str | None = None):
 		super().__init__(location, time)
 		self.size = size
 		self.activity = activity

@@ -1,4 +1,4 @@
-from sqlalchemy import *
+from sqlalchemy import Column, Integer, ForeignKey, String
 from typing import Self
 from sqlalchemy.orm import relationship
 
@@ -18,7 +18,7 @@ class SLLS(Report):
 		'polymorphic_identity': 'slls'
 	}
 
-	def __init__(self: Self, sender: Ally = None, recording: int = None, stop: str = None, listen: str = None, look: str = None, smell: str = None):
+	def __init__(self: Self, sender: Ally | None = None, recording: int | None = None, stop: str | None = None, listen: str | None = None, look: str | None = None, smell: str | None = None):
 		super().__init__(sender, recording)
 		self.stop = stop
 		self.listen = listen

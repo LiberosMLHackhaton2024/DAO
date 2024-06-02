@@ -1,4 +1,4 @@
-from sqlalchemy import *
+from sqlalchemy import Column, Integer, ForeignKey, String
 from typing import Self
 from sqlalchemy.orm import relationship, Session
 
@@ -17,7 +17,7 @@ class SAS(Report):
 		'polymorphic_identity': 'sas'
 	}
 
-	def __init__(self: Self, sender: Ally, recording: int = None, losses: int = None, ammunition: int = None, equipment: int = None):
+	def __init__(self: Self, sender: Ally | None = None, recording: int | None = None, losses: int | None = None, ammunition: int | None = None, equipment: int | None = None):
 		super().__init__(sender, recording)
 		self.losses = losses
 		self.ammunition = ammunition
@@ -31,7 +31,7 @@ class SAS(Report):
 		sender = self.sender
 		
 		# Increase the sender's losses by the losses reported in this SAS report
-		if sender.losses is not None and self.losses is not None:
+		if sender is not None and sender.losses is not None and self.losses is not None:
 			sender.losses += self.losses
 		
 		# Update the sender's ammunition and equipment status based on this SAS report

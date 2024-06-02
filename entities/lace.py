@@ -1,4 +1,4 @@
-from sqlalchemy import *
+from sqlalchemy import Column, Integer, ForeignKey, String
 from typing import Self
 from sqlalchemy.orm import relationship
 
@@ -18,7 +18,7 @@ class LACE(Report):
 		'polymorphic_identity': 'lace'
 	}
 
-	def __init__(self: Self, sender: Ally = None, recording: int = None, liquids: str = None, ammunition: str = None, casualties: str = None, equipment: str = None):
+	def __init__(self: Self, sender: Ally | None = None, recording: int | None = None, liquids: str | None = None, ammunition: str | None = None, casualties: str | None = None, equipment: str | None = None):
 		super().__init__(sender, recording)
 		self.liquids = liquids
 		self.ammunition = ammunition

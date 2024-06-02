@@ -1,4 +1,4 @@
-from sqlalchemy import *
+from sqlalchemy import Column, Integer, ForeignKey, String
 from typing import Self
 from sqlalchemy.orm import relationship
 
@@ -22,11 +22,11 @@ class Report(Base):
 		'polymorphic_identity': 'report'
 	}
 
-	def __init__(self: Self, sender: Ally, recording: int):
+	def __init__(self: Self, sender: Ally | None, recording: int | None) -> None:
 		self.sender = sender
 		self.recording = recording
 
-	def __repr__(self):
+	def __repr__(self: Self) -> str:
 		return f"Report({self.sender}, {self.recording})"
 	
 	def apply(self: Self):

@@ -1,4 +1,4 @@
-from sqlalchemy import *
+from sqlalchemy import Column, Integer, ForeignKey, String
 from typing import Self
 
 from entities.point import Point
@@ -26,7 +26,7 @@ class Ally(Point):
 		'polymorphic_identity': 'ally'
 	}
 
-	def __init__(self: Self, name: str = None, losses: int = None, ammunition: int = None, equipment: int = None, location: str = None, time: int = None, enemy_contact_time: int = None, situation: str = None, action: str = None):
+	def __init__(self: Self, name: str | None = None, losses: int | None = None, ammunition: int | None = None, equipment: int | None = None, location: str | None = None, time: int | None = None, enemy_contact_time: int | None = None, situation: str | None = None, action: str | None = None):
 		super().__init__(location, time)
 
 		self.name = name

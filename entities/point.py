@@ -1,4 +1,4 @@
-from sqlalchemy import *
+from sqlalchemy import Column, Integer, String
 from typing import Self
 
 from common_base import Base
@@ -17,7 +17,7 @@ class Point(Base):
 		'polymorphic_identity': 'point'
 	}
 
-	def __init__(self: Self, location: str = None, time: int = None):
+	def __init__(self: Self, location: str | None = None, time: int | None = None):
 		self.location = location
 		self.time = time
 
